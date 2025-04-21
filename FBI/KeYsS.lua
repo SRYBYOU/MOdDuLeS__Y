@@ -1,11 +1,11 @@
 return {
     FreeKeys = {
-        "YHUBxFREE-2025-EOQhC9gF"
+        "WVlIQUJ4RlJFRS0yMDI1LUVPUXhDNWdG"
     },
     PremiumKeys = {
-        "YHUBxPREMIUM-2025-QXr9Zk7Lp3"
+        "WVlIQUJ4UFJFTUlVTS0yMDI1LVEweE5aazdM"
     },
     VIPKeys = {
-        "YHUBxVIP-2025-YFDQMASrE"
+        "WVlIQUJ4VlJQLTEyMDI1LVlGRFFNQVNyRQ=="
     }
 }
