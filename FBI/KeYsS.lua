@@ -1,4 +1,4 @@
-returnreturn {
+return {
     FreeKeys = {
         { key = "YHUBxFREE-2025-EOQhC9gF", expirationDate = os.time{year = 2025, month = 4, day = 22, hour = 1, min = 1, sec = 1} },
     },
