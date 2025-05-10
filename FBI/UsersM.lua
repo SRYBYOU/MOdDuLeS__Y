@@ -1,4 +1,4 @@
-return {
+local BU = {
   Developerlist = {
     ["Youssef_14444888"] = true
   },
@@ -18,14 +18,16 @@ return {
   }
 }
 
-for _, member in pairs(VIPMembers) do
-    if not Ranks[member] then
-        Ranks[member] = "VIP"
+for _, member in pairs(Data.VIPMembers) do
+    if not Data.Ranks[member] then
+        Data.Ranks[member] = "VIP"
     end
 end
 
-for _, member in pairs(PremiumMembers) do
-    if not Ranks[member] then
-        Ranks[member] = "Premium"
+for _, member in pairs(Data.PremiumMembers) do
+    if not Data.Ranks[member] then
+        Data.Ranks[member] = "Premium"
     end
 end
+
+return BU
