@@ -18,15 +18,15 @@ local BU = {
   }
 }
 
-for _, member in pairs(Data.VIPMembers) do
-    if not Data.Ranks[member] then
-        Data.Ranks[member] = "VIP"
+for _, member in pairs(BU.VIPMembers) do
+    if not BU.Ranks[member] then
+        BU.Ranks[member] = "VIP"
     end
 end
 
-for _, member in pairs(Data.PremiumMembers) do
-    if not Data.Ranks[member] then
-        Data.Ranks[member] = "Premium"
+for _, member in pairs(BU.PremiumMembers) do
+    if not BU.Ranks[member] then
+        BU.Ranks[member] = "Premium"
     end
 end
 
