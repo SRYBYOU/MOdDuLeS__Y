@@ -70,6 +70,12 @@ local blacklist = {
 
 local now = os.time()
 
+for userId, data in pairs(blacklist) do
+    if data.expiration and now >= data.expiration then
+        blacklist[userId] = nil
+    end
+end
+
 for _, player in ipairs(Players:GetPlayers()) do
     local data = blacklist[player.UserId]
     if data then
