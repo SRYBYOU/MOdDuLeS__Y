@@ -1,6 +1,8 @@
 local BU = {
   Developerlist = {
-    ["Youssef_14444888"] = true
+    ["Youssef_14444888"] = true, 
+    ["sad_sad826"] = true, 
+    ["Lord_Sudo1"] = true
   },
 
   DeveloperslistIds = {
@@ -10,11 +12,11 @@ local BU = {
   }, 
 
   VIPMembers = {
-    "Youssef_14444888"
+    ""
   },
 
   PremiumMembers = {
-    "Youssef_14444888"
+    ""
   },
 
   Ranks = {
@@ -23,6 +25,12 @@ local BU = {
     ["Fahad_1161"] = "Distinct"
   }
 }
+
+for name, _ in pairs(BU.Developerlist) do
+    if not BU.Ranks[name] then
+        BU.Ranks[name] = "Dev"
+    end
+end
 
 for _, member in pairs(BU.VIPMembers) do
     if not BU.Ranks[member] then
