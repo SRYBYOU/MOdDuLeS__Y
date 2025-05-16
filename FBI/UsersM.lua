@@ -3,6 +3,12 @@ local BU = {
     ["Youssef_14444888"] = true
   },
 
+  DeveloperslistIds = {
+    [6066343600] = true,
+    [8465861897] = true,
+    [5324738339] = true
+  }, 
+
   VIPMembers = {
     "Youssef_14444888"
   },
