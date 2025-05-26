@@ -2,13 +2,17 @@ local BU = {
   Developerlist = {
     ["Youssef_14444888"] = true, 
     ["sad_sad826"] = true, 
-    ["Lord_Sudo1"] = true
+    ["Lord_Sudo1"] = true, 
+    ["SDRO10P"] = true, 
+    ["soolkodd"] = true
   },
 
   DeveloperslistIds = {
     [6066343600] = true,
     [8465861897] = true,
-    [5324738339] = true
+    [5324738339] = true, 
+    [5620468151] = true, 
+    [3553026648] = true
   }, 
 
   VIPMembers = {
