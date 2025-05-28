@@ -1,1 +1,4 @@
-return "M"
+return {
+    StatuS = "M",
+    SafetY = "S"
+}
