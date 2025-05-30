@@ -233,6 +233,10 @@ function UILibrary:CreateWindow(title, config)
     TitleLabel.Font = Enum.Font.GothamBold
     TitleLabel.ZIndex = 3
     TitleLabel.Parent = TitleBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local TitleLabel
     
     -- أزرار التحكم المحسنة
     local CloseButton = Instance.new("TextButton")
@@ -247,6 +251,10 @@ function UILibrary:CreateWindow(title, config)
     CloseButton.Font = Enum.Font.GothamBold
     CloseButton.ZIndex = 3
     CloseButton.Parent = TitleBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local CloseButton
     
     CreateCorner(CloseButton, UDim.new(0, 15))
     
@@ -262,6 +270,10 @@ function UILibrary:CreateWindow(title, config)
     MinimizeButton.Font = Enum.Font.GothamBold
     MinimizeButton.ZIndex = 3
     MinimizeButton.Parent = TitleBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local MinimizeButton
     
     CreateCorner(MinimizeButton, UDim.new(0, 15))
     
@@ -278,6 +290,10 @@ function UILibrary:CreateWindow(title, config)
     MaximizeButton.Font = Enum.Font.GothamBold
     MaximizeButton.ZIndex = 3
     MaximizeButton.Parent = TitleBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local MaximizeButton
     
     CreateCorner(MaximizeButton, UDim.new(0, 15))
     
@@ -595,6 +611,10 @@ function UILibrary:CreateWindow(title, config)
             ToggleLabel.TextXAlignment = Enum.TextXAlignment.Left
             ToggleLabel.Font = Enum.Font.Gotham
             ToggleLabel.Parent = ToggleFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local TabTitle
             
             local ToggleButton = Instance.new("TextButton")
             ToggleButton.Size = UDim2.new(0, 40, 0, 20)
@@ -603,6 +623,10 @@ function UILibrary:CreateWindow(title, config)
             ToggleButton.BorderSizePixel = 0
             ToggleButton.Text = ""
             ToggleButton.Parent = ToggleFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local ToggleButton
             
             CreateCorner(ToggleButton, UDim.new(0, 10))
             
@@ -655,6 +679,10 @@ function UILibrary:CreateWindow(title, config)
     SliderLabel.TextXAlignment = Enum.TextXAlignment.Left
     SliderLabel.Font = Enum.Font.Gotham
     SliderLabel.Parent = SliderFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local SliderLabel
     
     local ValueLabel = Instance.new("TextLabel")
     ValueLabel.Size = UDim2.new(0, 50, 0, 20)
@@ -666,6 +694,10 @@ function UILibrary:CreateWindow(title, config)
     ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
     ValueLabel.Font = Enum.Font.GothamBold
     ValueLabel.Parent = SliderFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local ValueLabel
     
     local SliderBar = Instance.new("Frame")
     SliderBar.Size = UDim2.new(1, 0, 0, 4)
@@ -692,6 +724,10 @@ function UILibrary:CreateWindow(title, config)
     SliderButton.BorderSizePixel = 0
     SliderButton.Text = ""
     SliderButton.Parent = SliderBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local SliderButton
     
     CreateCorner(SliderButton, UDim.new(0, 8))
     
@@ -774,6 +810,10 @@ function UILibrary:CreateWindow(title, config)
     SliderBarButton.BackgroundTransparency = 1
     SliderBarButton.Text = ""
     SliderBarButton.Parent = SliderBar
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local SliderBarButton
     
     local function HandleBarClick(input)
         local inputPos
@@ -874,6 +914,10 @@ end
             DropdownButton.TextXAlignment = Enum.TextXAlignment.Left
             DropdownButton.Font = Enum.Font.Gotham
             DropdownButton.Parent = DropdownFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local DropdownButton
             
             CreatePadding(DropdownButton)
             
@@ -960,6 +1004,10 @@ end
             Label.TextXAlignment = Enum.TextXAlignment.Left
             Label.Font = Enum.Font.Gotham
             Label.Parent = TabFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local DropdownArrow
             
             return Label
         end
@@ -998,6 +1046,10 @@ end
             ColorLabel.TextXAlignment = Enum.TextXAlignment.Left
             ColorLabel.Font = Enum.Font.Gotham
             ColorLabel.Parent = ColorFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local ColorLabel
             
             local ColorPreview = Instance.new("Frame")
             ColorPreview.Size = UDim2.new(0, 30, 0, 25)
@@ -1013,6 +1065,10 @@ end
             ColorButton.BackgroundTransparency = 1
             ColorButton.Text = ""
             ColorButton.Parent = ColorPreview
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local ColorButton
             
             ColorButton.MouseButton1Click:Connect(function()
                 -- هنا يمكنك إضافة نافذة اختيار الألوان المخصصة
@@ -1109,6 +1165,10 @@ function UILibrary:CreateContextMenu(options)
         OptionButton.TextXAlignment = Enum.TextXAlignment.Left
         OptionButton.Font = Enum.Font.Gotham
         OptionButton.Parent = ContextMenu
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local OptionButton
         
         CreatePadding(OptionButton, UDim.new(0, 5))
         
@@ -1219,6 +1279,10 @@ function UILibrary:CreateDialog(title, text, buttons)
         DialogButton.Font = Enum.Font.Gotham
         DialogButton.LayoutOrder = i
         DialogButton.Parent = ButtonFrame
+local constraint = Instance.new("UITextSizeConstraint")
+constraint.MaxTextSize = 24
+constraint.MinTextSize = 12
+constraint.Parent = local DialogButton
         
         CreateCorner(DialogButton)
         
