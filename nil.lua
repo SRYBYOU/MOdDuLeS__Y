@@ -929,4 +929,6 @@ function UILibrary:CreateDialog(title, text, buttons)
             DialogFrame:Destroy()
             Overlay:Destroy()
         end)
+    end
   end
+  return UILibrary
