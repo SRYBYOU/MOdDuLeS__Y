@@ -393,104 +393,176 @@ function UILibrary:CreateWindow(title, config)
         
         -- إضافة شريط التمرير (Slider)
         function Tab:CreateSlider(text, min, max, default, callback)
-            local SliderFrame = Instance.new("Frame")
-            SliderFrame.Name = text
-            SliderFrame.Size = UDim2.new(1, 0, 0, 50)
-            SliderFrame.BackgroundColor3 = DefaultSettings.Theme.Surface
-            SliderFrame.BorderSizePixel = 0
-            SliderFrame.Parent = TabFrame
-            
-            CreateCorner(SliderFrame)
-            CreateStroke(SliderFrame, DefaultSettings.Theme.Secondary)
-            CreatePadding(SliderFrame)
-            
-            local SliderLabel = Instance.new("TextLabel")
-            SliderLabel.Size = UDim2.new(1, -60, 0, 20)
-            SliderLabel.Position = UDim2.new(0, 0, 0, 0)
-            SliderLabel.BackgroundTransparency = 1
-            SliderLabel.Text = text
-            SliderLabel.TextColor3 = DefaultSettings.Theme.Text
-            SliderLabel.TextSize = 14
-            SliderLabel.TextXAlignment = Enum.TextXAlignment.Left
-            SliderLabel.Font = Enum.Font.Gotham
-            SliderLabel.Parent = SliderFrame
-            
-            local ValueLabel = Instance.new("TextLabel")
-            ValueLabel.Size = UDim2.new(0, 50, 0, 20)
-            ValueLabel.Position = UDim2.new(1, -50, 0, 0)
-            ValueLabel.BackgroundTransparency = 1
-            ValueLabel.Text = tostring(default)
-            ValueLabel.TextColor3 = DefaultSettings.Theme.Primary
-            ValueLabel.TextSize = 14
-            ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
-            ValueLabel.Font = Enum.Font.GothamBold
-            ValueLabel.Parent = SliderFrame
-            
-            local SliderBar = Instance.new("Frame")
-            SliderBar.Size = UDim2.new(1, 0, 0, 4)
-            SliderBar.Position = UDim2.new(0, 0, 1, -14)
-            SliderBar.BackgroundColor3 = DefaultSettings.Theme.Secondary
-            SliderBar.BorderSizePixel = 0
-            SliderBar.Parent = SliderFrame
-            
-            CreateCorner(SliderBar, UDim.new(0, 2))
-            
-            local SliderFill = Instance.new("Frame")
-            SliderFill.Size = UDim2.new((default - min) / (max - min), 0, 1, 0)
-            SliderFill.Position = UDim2.new(0, 0, 0, 0)
-            SliderFill.BackgroundColor3 = DefaultSettings.Theme.Primary
-            SliderFill.BorderSizePixel = 0
-            SliderFill.Parent = SliderBar
-            
-            CreateCorner(SliderFill, UDim.new(0, 2))
-            
-            local SliderButton = Instance.new("TextButton")
-            SliderButton.Size = UDim2.new(0, 16, 0, 16)
-            SliderButton.Position = UDim2.new((default - min) / (max - min), -8, 0.5, -8)
-            SliderButton.BackgroundColor3 = DefaultSettings.Theme.Text
-            SliderButton.BorderSizePixel = 0
-            SliderButton.Text = ""
-            SliderButton.Parent = SliderBar
-            
-            CreateCorner(SliderButton, UDim.new(0, 8))
-            
-            local currentValue = default
-            local isDragging = false
-            
-            local function UpdateSlider(value)
-                currentValue = math.clamp(value, min, max)
-                local percentage = (currentValue - min) / (max - min)
-                
-                SliderFill.Size = UDim2.new(percentage, 0, 1, 0)
-                SliderButton.Position = UDim2.new(percentage, -8, 0.5, -8)
-                ValueLabel.Text = tostring(math.floor(currentValue * 10) / 10)
-                
-                if callback then callback(currentValue) end
+    local SliderFrame = Instance.new("Frame")
+    SliderFrame.Name = text
+    SliderFrame.Size = UDim2.new(1, 0, 0, 50)
+    SliderFrame.BackgroundColor3 = DefaultSettings.Theme.Surface
+    SliderFrame.BorderSizePixel = 0
+    SliderFrame.Parent = TabFrame
+    
+    CreateCorner(SliderFrame)
+    CreateStroke(SliderFrame, DefaultSettings.Theme.Secondary)
+    CreatePadding(SliderFrame)
+    
+    local SliderLabel = Instance.new("TextLabel")
+    SliderLabel.Size = UDim2.new(1, -60, 0, 20)
+    SliderLabel.Position = UDim2.new(0, 0, 0, 0)
+    SliderLabel.BackgroundTransparency = 1
+    SliderLabel.Text = text
+    SliderLabel.TextColor3 = DefaultSettings.Theme.Text
+    SliderLabel.TextSize = 14
+    SliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+    SliderLabel.Font = Enum.Font.Gotham
+    SliderLabel.Parent = SliderFrame
+    
+    local ValueLabel = Instance.new("TextLabel")
+    ValueLabel.Size = UDim2.new(0, 50, 0, 20)
+    ValueLabel.Position = UDim2.new(1, -50, 0, 0)
+    ValueLabel.BackgroundTransparency = 1
+    ValueLabel.Text = tostring(default)
+    ValueLabel.TextColor3 = DefaultSettings.Theme.Primary
+    ValueLabel.TextSize = 14
+    ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
+    ValueLabel.Font = Enum.Font.GothamBold
+    ValueLabel.Parent = SliderFrame
+    
+    local SliderBar = Instance.new("Frame")
+    SliderBar.Size = UDim2.new(1, 0, 0, 4)
+    SliderBar.Position = UDim2.new(0, 0, 1, -14)
+    SliderBar.BackgroundColor3 = DefaultSettings.Theme.Secondary
+    SliderBar.BorderSizePixel = 0
+    SliderBar.Parent = SliderFrame
+    
+    CreateCorner(SliderBar, UDim.new(0, 2))
+    
+    local SliderFill = Instance.new("Frame")
+    SliderFill.Size = UDim2.new((default - min) / (max - min), 0, 1, 0)
+    SliderFill.Position = UDim2.new(0, 0, 0, 0)
+    SliderFill.BackgroundColor3 = DefaultSettings.Theme.Primary
+    SliderFill.BorderSizePixel = 0
+    SliderFill.Parent = SliderBar
+    
+    CreateCorner(SliderFill, UDim.new(0, 2))
+    
+    local SliderButton = Instance.new("TextButton")
+    SliderButton.Size = UDim2.new(0, 16, 0, 16)
+    SliderButton.Position = UDim2.new((default - min) / (max - min), -8, 0.5, -8)
+    SliderButton.BackgroundColor3 = DefaultSettings.Theme.Text
+    SliderButton.BorderSizePixel = 0
+    SliderButton.Text = ""
+    SliderButton.Parent = SliderBar
+    
+    CreateCorner(SliderButton, UDim.new(0, 8))
+    
+    local currentValue = default
+    local isDragging = false
+    local inputConnections = {}
+    
+    local function UpdateSlider(value)
+        currentValue = math.clamp(value, min, max)
+        local percentage = (currentValue - min) / (max - min)
+        
+        SliderFill.Size = UDim2.new(percentage, 0, 1, 0)
+        SliderButton.Position = UDim2.new(percentage, -8, 0.5, -8)
+        ValueLabel.Text = tostring(math.floor(currentValue * 10) / 10)
+        
+        if callback then callback(currentValue) end
+    end
+    
+    local function HandleInput(input)
+        if isDragging then
+            local inputPos
+            -- دعم الماوس والتاتش
+            if input.UserInputType == Enum.UserInputType.MouseMovement then
+                inputPos = input.Position.X
+            elseif input.UserInputType == Enum.UserInputType.Touch then
+                inputPos = input.Position.X
+            else
+                return
             end
             
-            SliderButton.MouseButton1Down:Connect(function()
-                isDragging = true
-            end)
-            
-            UserInputService.InputEnded:Connect(function(input)
-                if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                    isDragging = false
-                end
-            end)
-            
-            UserInputService.InputChanged:Connect(function(input)
-                if isDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-                    local mousePos = input.Position.X
-                    local sliderPos = SliderBar.AbsolutePosition.X
-                    local sliderSize = SliderBar.AbsoluteSize.X
-                    local percentage = math.clamp((mousePos - sliderPos) / sliderSize, 0, 1)
-                    local value = min + (max - min) * percentage
-                    UpdateSlider(value)
-                end
-            end)
-            
-            return SliderFrame
+            local sliderPos = SliderBar.AbsolutePosition.X
+            local sliderSize = SliderBar.AbsoluteSize.X
+            local percentage = math.clamp((inputPos - sliderPos) / sliderSize, 0, 1)
+            local value = min + (max - min) * percentage
+            UpdateSlider(value)
         end
+    end
+    
+    local function StartDragging()
+        isDragging = true
+        -- ربط الأحداث عند بداية السحب
+        table.insert(inputConnections, UserInputService.InputChanged:Connect(HandleInput))
+    end
+    
+    local function StopDragging(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or 
+           input.UserInputType == Enum.UserInputType.Touch then
+            isDragging = false
+            -- قطع الاتصالات
+            for _, connection in pairs(inputConnections) do
+                connection:Disconnect()
+            end
+            inputConnections = {}
+        end
+    end
+    
+    -- دعم النقر بالماوس
+    SliderButton.MouseButton1Down:Connect(StartDragging)
+    
+    -- دعم اللمس على الهاتف
+    SliderButton.TouchTap:Connect(function(touch, processed)
+        if not processed then
+            StartDragging()
+        end
+    end)
+    
+    SliderButton.TouchLongPress:Connect(function(touch, state, processed)
+        if not processed and state == Enum.UserInputState.Begin then
+            StartDragging()
+        end
+    end)
+    
+    -- إيقاف السحب
+    UserInputService.InputEnded:Connect(StopDragging)
+    
+    -- بديل آخر: جعل الـ SliderBar نفسه قابل للنقر
+    local SliderBarButton = Instance.new("TextButton")
+    SliderBarButton.Size = UDim2.new(1, 0, 1, 0)
+    SliderBarButton.Position = UDim2.new(0, 0, 0, 0)
+    SliderBarButton.BackgroundTransparency = 1
+    SliderBarButton.Text = ""
+    SliderBarButton.Parent = SliderBar
+    
+    local function HandleBarClick(input)
+        local inputPos
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            inputPos = input.Position.X
+        elseif input.UserInputType == Enum.UserInputType.Touch then
+            inputPos = input.Position.X
+        else
+            return
+        end
+        
+        local sliderPos = SliderBar.AbsolutePosition.X
+        local sliderSize = SliderBar.AbsoluteSize.X
+        local percentage = math.clamp((inputPos - sliderPos) / sliderSize, 0, 1)
+        local value = min + (max - min) * percentage
+        UpdateSlider(value)
+    end
+    
+    SliderBarButton.MouseButton1Click:Connect(function()
+        HandleBarClick(UserInputService:GetMouseLocation())
+    end)
+    
+    SliderBarButton.TouchTap:Connect(function(touch, processed)
+        if not processed then
+            HandleBarClick(touch)
+        end
+    end)
+    
+    return SliderFrame
+end
         
         -- إضافة مربع النص
         function Tab:CreateTextBox(text, placeholder, callback)
