@@ -236,7 +236,7 @@ function UILibrary:CreateWindow(title, config)
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local TitleLabel
+constraint.Parent = TitleLabel
     
     -- أزرار التحكم المحسنة
     local CloseButton = Instance.new("TextButton")
@@ -254,7 +254,7 @@ constraint.Parent = local TitleLabel
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local CloseButton
+constraint.Parent = CloseButton
     
     CreateCorner(CloseButton, UDim.new(0, 15))
     
@@ -273,7 +273,7 @@ constraint.Parent = local CloseButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local MinimizeButton
+constraint.Parent = MinimizeButton
     
     CreateCorner(MinimizeButton, UDim.new(0, 15))
     
@@ -293,7 +293,7 @@ constraint.Parent = local MinimizeButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local MaximizeButton
+constraint.Parent = MaximizeButton
     
     CreateCorner(MaximizeButton, UDim.new(0, 15))
     
@@ -614,7 +614,7 @@ constraint.Parent = local MaximizeButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local TabTitle
+constraint.Parent = TabTitle
             
             local ToggleButton = Instance.new("TextButton")
             ToggleButton.Size = UDim2.new(0, 40, 0, 20)
@@ -626,7 +626,7 @@ constraint.Parent = local TabTitle
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local ToggleButton
+constraint.Parent = ToggleButton
             
             CreateCorner(ToggleButton, UDim.new(0, 10))
             
@@ -682,7 +682,7 @@ constraint.Parent = local ToggleButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local SliderLabel
+constraint.Parent = SliderLabel
     
     local ValueLabel = Instance.new("TextLabel")
     ValueLabel.Size = UDim2.new(0, 50, 0, 20)
@@ -697,7 +697,7 @@ constraint.Parent = local SliderLabel
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local ValueLabel
+constraint.Parent = ValueLabel
     
     local SliderBar = Instance.new("Frame")
     SliderBar.Size = UDim2.new(1, 0, 0, 4)
@@ -727,7 +727,7 @@ constraint.Parent = local ValueLabel
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local SliderButton
+constraint.Parent = SliderButton
     
     CreateCorner(SliderButton, UDim.new(0, 8))
     
@@ -813,7 +813,7 @@ constraint.Parent = local SliderButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local SliderBarButton
+constraint.Parent = SliderBarButton
     
     local function HandleBarClick(input)
         local inputPos
@@ -917,7 +917,7 @@ end
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local DropdownButton
+constraint.Parent = DropdownButton
             
             CreatePadding(DropdownButton)
             
@@ -1007,7 +1007,7 @@ constraint.Parent = local DropdownButton
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local DropdownArrow
+constraint.Parent = DropdownArrow
             
             return Label
         end
@@ -1049,7 +1049,7 @@ constraint.Parent = local DropdownArrow
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local ColorLabel
+constraint.Parent = ColorLabel
             
             local ColorPreview = Instance.new("Frame")
             ColorPreview.Size = UDim2.new(0, 30, 0, 25)
@@ -1068,7 +1068,7 @@ constraint.Parent = local ColorLabel
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local ColorButton
+constraint.Parent = ColorButton
             
             ColorButton.MouseButton1Click:Connect(function()
                 -- هنا يمكنك إضافة نافذة اختيار الألوان المخصصة
@@ -1168,7 +1168,7 @@ function UILibrary:CreateContextMenu(options)
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local OptionButton
+constraint.Parent = OptionButton
         
         CreatePadding(OptionButton, UDim.new(0, 5))
         
@@ -1282,7 +1282,7 @@ function UILibrary:CreateDialog(title, text, buttons)
 local constraint = Instance.new("UITextSizeConstraint")
 constraint.MaxTextSize = 24
 constraint.MinTextSize = 12
-constraint.Parent = local DialogButton
+constraint.Parent = DialogButton
         
         CreateCorner(DialogButton)
         
@@ -1309,9 +1309,3 @@ constraint.Parent = local DialogButton
     end
   end
   return UILibrary
-  
-  
-  
-  
-  
-  
