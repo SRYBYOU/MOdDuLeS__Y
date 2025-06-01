@@ -37,14 +37,12 @@ local BU = {
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Distinct",
-    ["Fahad_1161"] = "VIP", 
-    ["Hdjsisjsbsv"] = "Distinct"
+    ["Fahad_1161"] = "VIP"
   },
 
   PreviousRanks = {}
 }
 
--- أولوية الرتب
 local priority = {
     ["Dev"] = 6,
     ["Owner"] = 5,
