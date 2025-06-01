@@ -5,7 +5,8 @@ local BU = {
     ["sad_sad826"] = true, 
     ["Lord_Sudo1"] = true, 
     ["SDRO10P"] = true, 
-    ["soolkodd"] = true
+    ["soolkodd"] = true, 
+    ["Hdjsisjsbsv"] = true
   },
 
   DeveloperslistIds = {
