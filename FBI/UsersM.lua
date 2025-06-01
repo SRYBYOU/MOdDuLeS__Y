@@ -21,12 +21,12 @@ local BU = {
   AdminsMembers = {},
   VIPMembers = {},
   VIPTGIDs = {},
-
+  
   PremiumMembers = {
     ["Hdjsisjsbsv"] = {
-        expirationDate = os.time{year = 2024, month = 1, day = 1}
+        expirationDate = os.time{year = 2020, month = 6, day = 10}
     }
-  },
+  }, 
 
   PremiumTGIDs = {
     "5541578106"
@@ -37,7 +37,7 @@ local BU = {
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Distinct",
-    ["Fahad_1161"] = "Distinct", 
+    ["Fahad_1161"] = "VIP", 
     ["Hdjsisjsbsv"] = "Distinct"
   },
 
@@ -45,20 +45,19 @@ local BU = {
 }
 
 local priority = {
-  ["Dev"] = 6,
-  ["Owner"] = 5,
-  ["Admin"] = 4,
-  ["VIP"] = 3,
-  ["Premium"] = 2,
-  ["Distinct"] = 1
+    ["Dev"] = 6,
+    ["Owner"] = 5,
+    ["Admin"] = 4,
+    ["VIP"] = 3,
+    ["Premium"] = 2,
+    ["Distinct"] = 1
 }
 
-
 local function setRank(name, newRank)
-  local currentRank = BU.Ranks[name]
-  if not currentRank or (priority[newRank] > (priority[currentRank] or 0)) then
-    BU.Ranks[name] = newRank
-  end
+    local currentRank = BU.Ranks[name]
+    if not currentRank or (priority[newRank] > (priority[currentRank] or 0)) then
+        BU.Ranks[name] = newRank
+    end
 end
 
 for name, _ in pairs(BU.Owners) do setRank(name, "Owner") end
@@ -68,27 +67,21 @@ for name, _ in pairs(BU.VIPMembers) do setRank(name, "VIP") end
 for name, _ in pairs(BU.DistinctMembers) do setRank(name, "Distinct") end
 
 for name, data in pairs(BU.PremiumMembers) do
-  local currentRank = BU.Ranks[name]
-  local currentPriority = priority[currentRank] or 0
-  local premiumPriority = priority["Premium"]
-
-  if data.expirationDate and os.time() < data.expirationDate then
-    
-    if premiumPriority > currentPriority then
-      if not BU.PreviousRanks[name] then
-        BU.PreviousRanks[name] = currentRank
-      end
-      BU.Ranks[name] = "Premium"
+    if data.expirationDate and os.time() < data.expirationDate then
+        if BU.Ranks[name] ~= "Premium" then
+            if not BU.PreviousRanks[name] then
+                BU.PreviousRanks[name] = BU.Ranks[name]
+            end
+            BU.Ranks[name] = "Premium"
+        end
+    elseif BU.Ranks[name] == "Premium" then
+        if BU.PreviousRanks[name] then
+            BU.Ranks[name] = BU.PreviousRanks[name]
+        else
+            BU.Ranks[name] = nil
+        end
+        BU.PreviousRanks[name] = nil
     end
-  elseif currentRank == "Premium" then
-    
-    if BU.PreviousRanks[name] then
-      BU.Ranks[name] = BU.PreviousRanks[name]
-    else
-      BU.Ranks[name] = nil
-    end
-    BU.PreviousRanks[name] = nil
-  end
 end
 
 return BU
