@@ -16,49 +16,73 @@ local BU = {
     [5620468151] = true, 
     [3553026648] = true
   }, 
--- for vip
-  VIPMembers = {
-    ""
-  },
+  -- owners
+  Owners = {},
+  -- amdins
+  AdminsMembers = {},
+  -- vip
+  VIPMembers = {},
   
-  VIPTGIDs = {
-    ""
-  },
--- for prm
+  VIPTGIDs = {},
+  -- PM
   PremiumMembers = {
     ["Hdjsisjsbsv"] = {
-        expirationDate = os.time{year = 2024, month = 6, day = 10, hour = 23, min = 59, sec = 59}
+        expirationDate = os.time{year = 2025, month = 6, day = 10}
     }
-}, 
-
+  }, 
   PremiumTGIDs = {
     "5541578106"
   },
-
--- ranks 
+  -- DIT
+  DistinctMembers = {}, 
+  -- rank
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Distinct",
-    ["Fahad_1161"] = "Distinct"
-  }
+    ["Fahad_1161"] = "Distinct", 
+    ["Hdjsisjsbsv"] = "Distinct"
+  },
+  -- previous
+  PreviousRanks = {}
 }
 
-for name, _ in pairs(BU.Developerlist) do
-    if not BU.Ranks[name] then
-        BU.Ranks[name] = "Dev"
+local priority = {
+    ["Dev"] = 6,
+    ["Owner"] = 5,
+    ["Admin"] = 4,
+    ["VIP"] = 3,
+    ["Premium"] = 2,
+    ["Distinct"] = 1
+}
+
+local function setRank(name, newRank)
+    local currentRank = BU.Ranks[name]
+    if not currentRank or (priority[newRank] > (priority[currentRank] or 0)) then
+        BU.Ranks[name] = newRank
     end
 end
 
-for _, member in pairs(BU.VIPMembers) do
-    if not BU.Ranks[member] then
-        BU.Ranks[member] = "VIP"
+for name, _ in pairs(BU.Owners) do setRank(name, "Owner") end
+for name, _ in pairs(BU.AdminsMembers) do setRank(name, "Admin") end
+for name, _ in pairs(BU.Developerlist) do setRank(name, "Dev") end
+for name, _ in pairs(BU.VIPMembers) do setRank(name, "VIP") end
+
+for name, data in pairs(BU.PremiumMembers) do
+    if data.expirationDate and os.time() < data.expirationDate then
+        if BU.Ranks[name] and BU.Ranks[name] ~= "Premium" and not BU.PreviousRanks[name] then
+            BU.PreviousRanks[name] = BU.Ranks[name]
+        end
+        setRank(name, "Premium")
+    elseif BU.Ranks[name] == "Premium" then
+        if BU.PreviousRanks[name] then
+            BU.Ranks[name] = BU.PreviousRanks[name]
+        else
+            BU.Ranks[name] = nil
+        end
+        BU.PreviousRanks[name] = nil
     end
 end
 
-for _, member in pairs(BU.PremiumMembers) do
-    if not BU.Ranks[member] then
-        BU.Ranks[member] = "Premium"
-    end
-end
+for name, _ in pairs(BU.DistinctMembers) do setRank(name, "Distinct") end
 
 return BU
