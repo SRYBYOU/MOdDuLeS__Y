@@ -25,9 +25,11 @@ local BU = {
   },
 -- for prm
   PremiumMembers = {
-    ""
-  },
-  
+    ["player1"] = {
+        expirationDate = os.time{year = 2025, month = 6, day = 10, hour = 23, min = 59, sec = 59}
+    }
+}, 
+
   PremiumTGIDs = {
     "5541578106"
   },
