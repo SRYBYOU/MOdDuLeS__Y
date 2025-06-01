@@ -16,36 +16,35 @@ local BU = {
     [5620468151] = true, 
     [3553026648] = true
   }, 
-  -- owners
+
   Owners = {},
-  -- amdins
   AdminsMembers = {},
-  -- vip
   VIPMembers = {},
-  
   VIPTGIDs = {},
-  -- PM
+  
   PremiumMembers = {
     ["Hdjsisjsbsv"] = {
         expirationDate = os.time{year = 2020, month = 6, day = 10}
     }
   }, 
+
   PremiumTGIDs = {
     "5541578106"
   },
-  -- DIT
+
   DistinctMembers = {}, 
-  -- rank
+
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Distinct",
-    ["Fahad_1161"] = "Distinct", 
+    ["Fahad_1161"] = "VIP", 
     ["Hdjsisjsbsv"] = "Distinct"
   },
-  -- previous
+
   PreviousRanks = {}
 }
 
+-- أولوية الرتب
 local priority = {
     ["Dev"] = 6,
     ["Owner"] = 5,
@@ -66,13 +65,17 @@ for name, _ in pairs(BU.Owners) do setRank(name, "Owner") end
 for name, _ in pairs(BU.AdminsMembers) do setRank(name, "Admin") end
 for name, _ in pairs(BU.Developerlist) do setRank(name, "Dev") end
 for name, _ in pairs(BU.VIPMembers) do setRank(name, "VIP") end
+for name, _ in pairs(BU.DistinctMembers) do setRank(name, "Distinct") end
+
 
 for name, data in pairs(BU.PremiumMembers) do
     if data.expirationDate and os.time() < data.expirationDate then
-        if BU.Ranks[name] and BU.Ranks[name] ~= "Premium" and not BU.PreviousRanks[name] then
-            BU.PreviousRanks[name] = BU.Ranks[name]
+        if BU.Ranks[name] ~= "Premium" then
+            if not BU.PreviousRanks[name] then
+                BU.PreviousRanks[name] = BU.Ranks[name]
+            end
+            BU.Ranks[name] = "Premium"
         end
-        setRank(name, "Premium")
     elseif BU.Ranks[name] == "Premium" then
         if BU.PreviousRanks[name] then
             BU.Ranks[name] = BU.PreviousRanks[name]
@@ -82,7 +85,5 @@ for name, data in pairs(BU.PremiumMembers) do
         BU.PreviousRanks[name] = nil
     end
 end
-
-for name, _ in pairs(BU.DistinctMembers) do setRank(name, "Distinct") end
 
 return BU
