@@ -1,4 +1,5 @@
 local BU = {
+  -- for dev
   Developerlist = {
     ["Youssef_14444888"] = true, 
     ["sad_sad826"] = true, 
@@ -14,15 +15,23 @@ local BU = {
     [5620468151] = true, 
     [3553026648] = true
   }, 
-
+-- for vip
   VIPMembers = {
     ""
   },
-
+  
+  VIPTGIDs = {
+    ""
+  },
+-- for prm
   PremiumMembers = {
     ""
   },
-
+  
+  PremiumTGIDs = {
+    "5541578106"
+  },
+-- ranks
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Distinct",
