@@ -1,5 +1,4 @@
--- مكتبة UI كاملة لـ Roblox
--- Complete Roblox UI Library
+
 
 local UILibrary = {}
 local TweenService = game:GetService("TweenService")
@@ -11,7 +10,6 @@ local GuiService = game:GetService("GuiService")
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 
--- الإعدادات الافتراضية - Enhanced Default Settings
 local DefaultSettings = {
     Theme = {
         Primary = Color3.fromRGB(64, 128, 255),
@@ -43,7 +41,6 @@ local DefaultSettings = {
     }
 }
 
--- وظائف مساعدة محسنة - Enhanced Helper Functions
 local function CreateTween(object, properties, duration, easingStyle, easingDirection)
     duration = duration or DefaultSettings.Animation.Duration
     easingStyle = easingStyle or DefaultSettings.Animation.EasingStyle
@@ -79,7 +76,6 @@ local function CreateStroke(parent, color, thickness)
     return stroke
 end
 
--- إضافة تأثير الظل - Add Shadow Effect
 local function CreateShadow(parent)
     local shadow = Instance.new("ImageLabel")
     shadow.Name = "Shadow"
@@ -96,7 +92,6 @@ local function CreateShadow(parent)
     return shadow
 end
 
--- تحسين تأثيرات الأزرار - Enhanced Button Effects
 local function AddButtonEffects(button, hoverColor, clickColor)
     local originalColor = button.BackgroundColor3
     local originalSize = button.Size
@@ -130,7 +125,6 @@ local function AddButtonEffects(button, hoverColor, clickColor)
     end)
 end
 
--- إضافة تأثير النبضة - Add Pulse Effect
 local function CreatePulseEffect(object, pulseColor)
     local pulseFrame = Instance.new("Frame")
     pulseFrame.Name = "PulseEffect"
@@ -160,11 +154,9 @@ local function CreatePulseEffect(object, pulseColor)
     return pulseTween
 end
 
--- إنشاء النافذة الرئيسية - Enhanced Main Window Creation
 function UILibrary:CreateWindow(title, config)
     config = config or {}
-    
-    -- التحقق من وجود نافذة بنفس الاسم
+
     local existingGui = PlayerGui:FindFirstChild("UILibrary_" .. title)
     if existingGui then
         existingGui:Destroy()
@@ -190,8 +182,7 @@ function UILibrary:CreateWindow(title, config)
     CreateCorner(MainFrame)
     CreateStroke(MainFrame, DefaultSettings.Theme.Primary, 2)
     CreateShadow(MainFrame)
-    
-    -- تأثير الظهور المحسن
+
     MainFrame.Size = UDim2.new(0, 0, 0, 0)
     MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
     
@@ -199,8 +190,7 @@ function UILibrary:CreateWindow(title, config)
         Size = UDim2.new(0, config.Size and config.Size.X or 500, 0, config.Size and config.Size.Y or 400),
         Position = UDim2.new(0.5, -250, 0.5, -200)
     }, DefaultSettings.Animation.SlowDuration, Enum.EasingStyle.Back):Play()
-    
-    -- شريط العنوان المحسن
+
     local TitleBar = Instance.new("Frame")
     TitleBar.Name = "TitleBar"
     TitleBar.Size = UDim2.new(1, 0, 0, 40)
@@ -211,8 +201,7 @@ function UILibrary:CreateWindow(title, config)
     TitleBar.Parent = MainFrame
     
     CreateCorner(TitleBar, UDim.new(0, 8))
-    
-    -- إضافة تدرج للشريط العلوي
+
     local TitleGradient = Instance.new("UIGradient")
     TitleGradient.Color = ColorSequence.new{
         ColorSequenceKeypoint.new(0, DefaultSettings.Theme.Primary),
@@ -233,8 +222,7 @@ function UILibrary:CreateWindow(title, config)
     TitleLabel.Font = Enum.Font.GothamBold
     TitleLabel.ZIndex = 3
     TitleLabel.Parent = TitleBar
-    
-    -- أزرار التحكم المحسنة
+
     local CloseButton = Instance.new("TextButton")
     CloseButton.Name = "CloseButton"
     CloseButton.Size = UDim2.new(0, 30, 0, 30)
@@ -264,8 +252,7 @@ function UILibrary:CreateWindow(title, config)
     MinimizeButton.Parent = TitleBar
     
     CreateCorner(MinimizeButton, UDim.new(0, 15))
-    
-    -- إضافة زر تكبير/تصغير الشاشة
+
     local MaximizeButton = Instance.new("TextButton")
     MaximizeButton.Name = "MaximizeButton"
     MaximizeButton.Size = UDim2.new(0, 30, 0, 30)
@@ -280,8 +267,7 @@ function UILibrary:CreateWindow(title, config)
     MaximizeButton.Parent = TitleBar
     
     CreateCorner(MaximizeButton, UDim.new(0, 15))
-    
-    -- منطقة المحتوى المحسنة
+
     local ContentFrame = Instance.new("ScrollingFrame")
     ContentFrame.Name = "Content"
     ContentFrame.Size = UDim2.new(1, 0, 1, -40)
@@ -300,8 +286,7 @@ function UILibrary:CreateWindow(title, config)
     ContentLayout.SortOrder = Enum.SortOrder.LayoutOrder
     ContentLayout.Padding = DefaultSettings.UI.Spacing
     ContentLayout.Parent = ContentFrame
-    
-    -- متغيرات التحكم المحسنة
+
     local isMinimized = false
     local isMaximized = false
     local isDragging = false
@@ -309,22 +294,19 @@ function UILibrary:CreateWindow(title, config)
     local startPos = nil
     local originalSize = MainFrame.Size
     local originalPosition = MainFrame.Position
-    
-    -- وظائف التحكم المحسنة
+
     local function UpdateCanvasSize()
         ContentFrame.CanvasSize = UDim2.new(0, 0, 0, ContentLayout.AbsoluteContentSize.Y + 20)
     end
     
     ContentLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(UpdateCanvasSize)
-    
-    -- تحسين وظيفة السحب
+
     local function StartDrag(input)
         if isMaximized then return end
         isDragging = true
         dragStart = input.Position
         startPos = MainFrame.Position
-        
-        -- تأثير بصري أثناء السحب
+
         CreateTween(MainFrame, {BackgroundTransparency = 0.1}):Play()
     end
     
@@ -337,8 +319,7 @@ function UILibrary:CreateWindow(title, config)
                 startPos.Y.Scale,
                 startPos.Y.Offset + delta.Y
             )
-            
-            -- منع السحب خارج الشاشة
+
             local viewport = workspace.CurrentCamera.ViewportSize
             local frameSize = MainFrame.AbsoluteSize
             
@@ -360,8 +341,7 @@ function UILibrary:CreateWindow(title, config)
             CreateTween(MainFrame, {BackgroundTransparency = 0}):Play()
         end
     end
-    
-    -- أحداث السحب المحسنة
+
     TitleBar.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or 
            input.UserInputType == Enum.UserInputType.Touch then
@@ -382,8 +362,7 @@ function UILibrary:CreateWindow(title, config)
             EndDrag()
         end
     end)
-    
-    -- وظيفة التصغير المحسنة
+
     local function ToggleMinimize()
         isMinimized = not isMinimized
         local targetSize = isMinimized and UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 40) or originalSize
@@ -392,8 +371,7 @@ function UILibrary:CreateWindow(title, config)
         CreateTween(MainFrame, {Size = targetSize, Position = targetPos}, DefaultSettings.Animation.Duration, Enum.EasingStyle.Back):Play()
         MinimizeButton.Text = isMinimized and "□" or "─"
     end
-    
-    -- وظيفة التكبير
+
     local function ToggleMaximize()
         isMaximized = not isMaximized
         local viewport = workspace.CurrentCamera.ViewportSize
@@ -411,10 +389,9 @@ function UILibrary:CreateWindow(title, config)
     
     MinimizeButton.MouseButton1Click:Connect(ToggleMinimize)
     MaximizeButton.MouseButton1Click:Connect(ToggleMaximize)
-    
-    -- وظيفة الإغلاق المحسنة
+
     CloseButton.MouseButton1Click:Connect(function()
-        -- تأثير نبضة قبل الإغلاق
+        
         CreatePulseEffect(CloseButton, DefaultSettings.Theme.Error):Play()
         
         wait(0.2)
@@ -427,13 +404,11 @@ function UILibrary:CreateWindow(title, config)
         wait(DefaultSettings.Animation.Duration)
         ScreenGui:Destroy()
     end)
-    
-    -- إضافة تأثيرات محسنة للأزرار
+
     AddButtonEffects(CloseButton, DefaultSettings.Theme.Error:lerp(Color3.new(1,1,1), 0.2))
     AddButtonEffects(MinimizeButton, DefaultSettings.Theme.Warning:lerp(Color3.new(1,1,1), 0.2))
     AddButtonEffects(MaximizeButton, DefaultSettings.Theme.Success:lerp(Color3.new(1,1,1), 0.2))
-    
-    -- كائن النافذة المحسن
+
     local Window = {
         Frame = MainFrame,
         Content = ContentFrame,
@@ -441,16 +416,14 @@ function UILibrary:CreateWindow(title, config)
         Layout = ContentLayout,
         Settings = DefaultSettings
     }
-    
-    -- دالة تغيير السمة
+
     function Window:SetTheme(newTheme)
         for key, value in pairs(newTheme) do
             if DefaultSettings.Theme[key] then
                 DefaultSettings.Theme[key] = value
             end
         end
-        
-        -- تحديث الألوان
+
         MainFrame.BackgroundColor3 = DefaultSettings.Theme.Background
         TitleBar.BackgroundColor3 = DefaultSettings.Theme.Primary
         ContentFrame.BackgroundColor3 = DefaultSettings.Theme.Background
@@ -461,8 +434,7 @@ function UILibrary:CreateWindow(title, config)
             stroke.Color = DefaultSettings.Theme.Primary
         end
     end
-    
-    -- إضافة تبويب محسن
+
     function Window:CreateTab(name, icon)
         local Tab = {}
         
@@ -477,8 +449,7 @@ function UILibrary:CreateWindow(title, config)
         CreateCorner(TabFrame)
         CreateStroke(TabFrame, DefaultSettings.Theme.Secondary)
         CreatePadding(TabFrame)
-        
-        -- إضافة تدرج للخلفية
+
         local TabGradient = Instance.new("UIGradient")
         TabGradient.Color = ColorSequence.new{
             ColorSequenceKeypoint.new(0, DefaultSettings.Theme.Surface),
@@ -514,8 +485,7 @@ function UILibrary:CreateWindow(title, config)
         TabTitle.Font = Enum.Font.GothamBold
         TabTitle.ZIndex = 3
         TabTitle.Parent = TabHeader
-        
-        -- إضافة أيقونة إذا تم توفيرها
+
         if icon then
             local TabIcon = Instance.new("TextLabel")
             TabIcon.Name = "Icon"
@@ -539,8 +509,7 @@ function UILibrary:CreateWindow(title, config)
         Tab.Frame = TabFrame
         Tab.Layout = TabLayout
         Tab.Header = TabHeader
-        
-        -- إضافة زر
+
         function Tab:CreateButton(text, callback)
             local Button = Instance.new("TextButton")
             Button.Name = text
@@ -572,8 +541,7 @@ function UILibrary:CreateWindow(title, config)
             
             return Button
         end
-        
-        -- إضافة تبديل (Toggle)
+
         function Tab:CreateToggle(text, default, callback)
             local ToggleFrame = Instance.new("Frame")
             ToggleFrame.Name = text
@@ -631,8 +599,7 @@ function UILibrary:CreateWindow(title, config)
             
             return ToggleFrame
         end
-        
-        -- إضافة شريط التمرير (Slider)
+
         function Tab:CreateSlider(text, min, max, default, callback)
     local SliderFrame = Instance.new("Frame")
     SliderFrame.Name = text
@@ -713,7 +680,7 @@ function UILibrary:CreateWindow(title, config)
     local function HandleInput(input)
         if isDragging then
             local inputPos
-            -- دعم الماوس والتاتش
+
             if input.UserInputType == Enum.UserInputType.MouseMovement then
                 inputPos = input.Position.X
             elseif input.UserInputType == Enum.UserInputType.Touch then
@@ -732,7 +699,7 @@ function UILibrary:CreateWindow(title, config)
     
     local function StartDragging()
         isDragging = true
-        -- ربط الأحداث عند بداية السحب
+
         table.insert(inputConnections, UserInputService.InputChanged:Connect(HandleInput))
     end
     
@@ -740,18 +707,16 @@ function UILibrary:CreateWindow(title, config)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or 
            input.UserInputType == Enum.UserInputType.Touch then
             isDragging = false
-            -- قطع الاتصالات
+
             for _, connection in pairs(inputConnections) do
                 connection:Disconnect()
             end
             inputConnections = {}
         end
     end
-    
-    -- دعم النقر بالماوس
+
     SliderButton.MouseButton1Down:Connect(StartDragging)
-    
-    -- دعم اللمس على الهاتف
+
     SliderButton.TouchTap:Connect(function(touch, processed)
         if not processed then
             StartDragging()
@@ -763,11 +728,9 @@ function UILibrary:CreateWindow(title, config)
             StartDragging()
         end
     end)
-    
-    -- إيقاف السحب
+
     UserInputService.InputEnded:Connect(StopDragging)
-    
-    -- بديل آخر: جعل الـ SliderBar نفسه قابل للنقر
+
     local SliderBarButton = Instance.new("TextButton")
     SliderBarButton.Size = UDim2.new(1, 0, 1, 0)
     SliderBarButton.Position = UDim2.new(0, 0, 0, 0)
@@ -804,8 +767,7 @@ function UILibrary:CreateWindow(title, config)
     
     return SliderFrame
 end
-        
-        -- إضافة مربع النص
+
         function Tab:CreateTextBox(text, placeholder, callback)
             local TextBoxFrame = Instance.new("Frame")
             TextBoxFrame.Name = text
@@ -850,8 +812,7 @@ end
             
             return TextBox
         end
-        
-        -- إضافة قائمة منسدلة
+
         function Tab:CreateDropdown(text, options, callback)
             local DropdownFrame = Instance.new("Frame")
             DropdownFrame.Name = text
@@ -926,8 +887,7 @@ end
                 
                 return OptionButton
             end
-            
-            -- إنشاء الخيارات
+
             for i, option in ipairs(options) do
                 CreateOption(option, i)
             end
@@ -947,8 +907,7 @@ end
             
             return DropdownFrame
         end
-        
-        -- إضافة تسمية
+
         function Tab:CreateLabel(text)
             local Label = Instance.new("TextLabel")
             Label.Name = text
@@ -963,8 +922,7 @@ end
             
             return Label
         end
-        
-        -- إضافة فاصل
+
         function Tab:CreateSeparator()
             local Separator = Instance.new("Frame")
             Separator.Name = "Separator"
@@ -975,8 +933,7 @@ end
             
             return Separator
         end
-        
-        -- إضافة صندوق ألوان
+
         function Tab:CreateColorPicker(text, default, callback)
             local ColorFrame = Instance.new("Frame")
             ColorFrame.Name = text
@@ -1015,7 +972,7 @@ end
             ColorButton.Parent = ColorPreview
             
             ColorButton.MouseButton1Click:Connect(function()
-                -- هنا يمكنك إضافة نافذة اختيار الألوان المخصصة
+
                 if callback then callback(ColorPreview.BackgroundColor3) end
             end)
             
@@ -1024,8 +981,7 @@ end
         
         return Tab
     end
-    
-    -- إضافة إشعار
+
     function Window:CreateNotification(title, text, duration)
         duration = duration or 3
         
@@ -1062,12 +1018,10 @@ end
         NotificationText.Font = Enum.Font.Gotham
         NotificationText.TextWrapped = true
         NotificationText.Parent = NotificationFrame
-        
-        -- تأثير الظهور
+
         NotificationFrame.Position = UDim2.new(1, 0, 1, -100)
         CreateTween(NotificationFrame, {Position = UDim2.new(1, -320, 1, -100)}):Play()
-        
-        -- الإخفاء التلقائي
+
         spawn(function()
             wait(duration)
             CreateTween(NotificationFrame, {Position = UDim2.new(1, 0, 1, -100)}):Play()
@@ -1081,7 +1035,6 @@ end
     return Window
 end
 
--- إنشاء قائمة سياقية
 function UILibrary:CreateContextMenu(options)
     local ContextMenu = Instance.new("Frame")
     ContextMenu.Size = UDim2.new(0, 150, 0, #options * 30)
@@ -1126,8 +1079,7 @@ function UILibrary:CreateContextMenu(options)
             ContextMenu:Destroy()
         end)
     end
-    
-    -- إغلاق القائمة عند النقر خارجها
+
     local function CloseMenu()
         ContextMenu:Destroy()
     end
@@ -1137,15 +1089,13 @@ function UILibrary:CreateContextMenu(options)
             CloseMenu()
         end
     end)
-    
-    -- تحديد موقع القائمة
+
     local mouse = Player:GetMouse()
     ContextMenu.Position = UDim2.new(0, mouse.X, 0, mouse.Y)
     
     return ContextMenu
 end
 
--- إنشاء نافذة حوار
 function UILibrary:CreateDialog(title, text, buttons)
     local DialogFrame = Instance.new("Frame")
     DialogFrame.Size = UDim2.new(0, 400, 0, 200)
@@ -1157,8 +1107,7 @@ function UILibrary:CreateDialog(title, text, buttons)
     
     CreateCorner(DialogFrame)
     CreateStroke(DialogFrame, DefaultSettings.Theme.Primary, 2)
-    
-    -- خلفية شفافة
+
     local Overlay = Instance.new("Frame")
     Overlay.Size = UDim2.new(1, 0, 1, 0)
     Overlay.BackgroundColor3 = Color3.new(0, 0, 0)
@@ -1166,8 +1115,7 @@ function UILibrary:CreateDialog(title, text, buttons)
     Overlay.BorderSizePixel = 0
     Overlay.Parent = PlayerGui
     Overlay.ZIndex = 999
-    
-    -- شريط العنوان
+
     local DialogTitle = Instance.new("TextLabel")
     DialogTitle.Size = UDim2.new(1, 0, 0, 40)
     DialogTitle.BackgroundColor3 = DefaultSettings.Theme.Primary
@@ -1179,8 +1127,7 @@ function UILibrary:CreateDialog(title, text, buttons)
     DialogTitle.Parent = DialogFrame
     
     CreateCorner(DialogTitle, UDim.new(0, 8))
-    
-    -- النص
+
     local DialogText = Instance.new("TextLabel")
     DialogText.Size = UDim2.new(1, -40, 1, -100)
     DialogText.Position = UDim2.new(0, 20, 0, 50)
@@ -1192,8 +1139,7 @@ function UILibrary:CreateDialog(title, text, buttons)
     DialogText.TextWrapped = true
     DialogText.TextYAlignment = Enum.TextYAlignment.Top
     DialogText.Parent = DialogFrame
-    
-    -- منطقة الأزرار
+
     local ButtonFrame = Instance.new("Frame")
     ButtonFrame.Size = UDim2.new(1, -40, 0, 40)
     ButtonFrame.Position = UDim2.new(0, 20, 1, -50)
@@ -1206,8 +1152,7 @@ function UILibrary:CreateDialog(title, text, buttons)
     ButtonLayout.SortOrder = Enum.SortOrder.LayoutOrder
     ButtonLayout.Padding = UDim.new(0, 10)
     ButtonLayout.Parent = ButtonFrame
-    
-    -- إنشاء الأزرار
+
     for i, button in ipairs(buttons) do
         local DialogButton = Instance.new("TextButton")
         DialogButton.Size = UDim2.new(0, 80, 1, 0)
