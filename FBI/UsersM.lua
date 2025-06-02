@@ -33,8 +33,8 @@ local BU = {
 
   Ranks = {
     ["Youssef_14444888"] = "Dev",
-    ["SDRO10P"] = "Distinct",
-    ["Fahad_1161"] = "VIP", 
+    ["SDRO10P"] = "Dev",
+    ["Fahad_1161"] = "Distinct", 
     ["Hdjsisjsbsv"] = "Distinct"
   },
 
