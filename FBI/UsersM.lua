@@ -20,8 +20,8 @@ local BU = {
   VIPTGIDs = {},
   
   PremiumMembers = {
-    ["Urhrhrhe_uwy"] = {
-        expirationDate = os.time{year = 2025, month = 6, day = 4}
+    ["Neymar_Ez57"] = {
+        expirationDate = os.time{year = 2025, month = 6, day = 30}
     }
   }, 
 
@@ -35,7 +35,7 @@ local BU = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Dev",
     ["Fahad_1161"] = "Distinct", 
-    ["Hdjsisjsbsv"] = "Distinct"
+    ["Neymar_Ez57"] = "Distinct"
   },
 
   PreviousRanks = {}
