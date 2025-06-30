@@ -21,7 +21,7 @@ local BU = {
   
   PremiumMembers = {
     ["Neymar_Ez57"] = {
-        expirationDate = os.time{year = 2025, month = 6, day = 30}
+        expirationDate = os.time{year = 2025, month = 7, day = 1}
     }
   }, 
 
