@@ -2,7 +2,7 @@ local BU = {
   -- for dev
   Developerlist = {
     ["Youssef_14444888"] = true,
-    ["SDRO10P"] = true, 
+    ["373illix"] = true, 
     ["soolkodd"] = true
   },
 
