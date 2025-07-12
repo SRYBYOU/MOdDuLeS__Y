@@ -9,7 +9,9 @@ local BU = {
   DeveloperslistIds = {
     [6066343600] = true, 
     [3553026648] = true, 
-    [5547171466] = true
+    [5547171466] = true,
+    [5457522564] = true,
+    [8568786319] = true
   }, 
 
   Owners = {},
