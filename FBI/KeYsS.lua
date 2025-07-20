@@ -1,6 +1,6 @@
 return {
     FreeKeys = {
-        { key = "RealzxFREE-2025-EOQhC9gF", expirationDate = os.time{year = 2025, month = 7, day = 3, hour = 1, min = 1, sec = 1} },
+        { key = "RealzxFREE-2025-EOQhC9gF", expirationDate = os.time{year = 2025, month = 8, day = 3, hour = 1, min = 1, sec = 1} },
     },
     PremiumKeys = {
         "RealzxPREMIUM-2025-QXr9Zk7Lp3",
