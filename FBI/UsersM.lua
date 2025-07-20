@@ -34,8 +34,7 @@ local BU = {
   Ranks = {
     ["Youssef_14444888"] = "Dev",
     ["SDRO10P"] = "Dev",
-    ["Fahad_1161"] = "Distinct", 
-    ["Neymar_Ez57"] = "Distinct"
+    ["Fahad_1161"] = "Distinct"
   },
 
   PreviousRanks = {}
