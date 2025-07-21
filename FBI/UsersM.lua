@@ -18,8 +18,7 @@ local BU = {
 
   Owners = {},
   AdminsMembers = {},
-  VIPMembers = {},
-  VIPTGIDs = {},
+  VIPMembers = {}, 
   
   PremiumMembers = {
     ["Neymar_Ez57"] = {
@@ -31,7 +30,7 @@ local BU = {
     "5541578106"
   },
   
-  VIPTGIDs = {} 
+  VIPTGIDs = {}, 
 
   DistinctMembers = {}, 
 
