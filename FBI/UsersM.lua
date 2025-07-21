@@ -3,7 +3,7 @@ local BU = {
   Developerlist = {
     ["Youssef_14444888"] = true,
     ["373illix"] = true, 
-    ["soolkodd"] = true 
+    ["soolkodd"] = true, 
     ["ioonj42"] = true, 
     ["Wowgoodtpsnoob"] = true
   },
