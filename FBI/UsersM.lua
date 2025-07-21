@@ -30,6 +30,8 @@ local BU = {
   PremiumTGIDs = {
     "5541578106"
   },
+  
+  VIPTGIDs = {} 
 
   DistinctMembers = {}, 
 
